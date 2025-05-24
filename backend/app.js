@@ -19,7 +19,7 @@ dotenv.config(); // Load environment variables from .env file
 
 const app = express();
 app.use(cors({
-    origin: 'http://localhost:5173', // Frontend ka URL
+    origin: process.env.FRONTEND_URL, // Frontend ka URL
     credentials: true,  // Allow cookies to be sent with requests
 }));
 app.use(express.json());

@@ -14,7 +14,7 @@ const secretroom = (userId, targetuserid) => {
 const intializesocket = (server) => {
     const io = new Server(server, {
         cors: {
-            origin: "http://localhost:5173", // frontend
+            origin:process.env.FRONTEND_URL, // frontend
             credentials: true,
         },
     });
