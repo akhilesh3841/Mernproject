@@ -3,6 +3,11 @@ import crypto from "crypto";
 import { Chatstore } from "../models/chat.js";
 import { Connectionreq } from "../models/connectionreq.js";
 
+
+import dotenv from "dotenv";
+dotenv.config(); // Load environment variables from .env file
+
+
 // 🔐 Generate consistent room ID for any user pair
 const secretroom = (userId, targetuserid) => {
     return crypto

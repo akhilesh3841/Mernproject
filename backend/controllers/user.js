@@ -3,6 +3,14 @@ import bcrypt from "bcrypt";
 import crypto from "crypto"
 import nodemailer from "nodemailer"
 
+
+
+import dotenv from "dotenv";
+dotenv.config(); // Load environment variables from .env file
+
+
+
+
 import {validateEditProfileData, validateSignUpData} from "../utils/validation.js"
 
 export const register=async(req,res)=>{
@@ -166,7 +174,7 @@ export const forgetpassword=async(req,res)=>{
         await user.save();
 
         // 3. Send email (fake link for now)
-        const resetLink = `http://13.234.110.96/reset-password/${resetToken}`; // replace with frontend link
+        const resetLink = process.env.FRONTEND_URL+`/reset-password/${resetToken}`; // replace with frontend link
 
         // Use nodemailer (for production, use a real SMTP service)
         const transporter = nodemailer.createTransport({
